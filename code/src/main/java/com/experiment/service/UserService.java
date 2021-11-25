@@ -4,6 +4,6 @@ import com.experiment.common.Result;
 import com.experiment.entity.User;
 
 public interface UserService {
-    public Result<?> login(User user);
+    Result<?> login(User user);
 
 }
