@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@TableName("lab_user")
+@TableName("user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +22,6 @@ public class User {
     private String userPhone;
     @TableField("user_type")
     private String userType;
+    @TableField(exist = false)
+    private String token;
 }

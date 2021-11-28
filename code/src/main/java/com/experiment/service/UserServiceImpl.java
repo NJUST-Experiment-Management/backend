@@ -16,11 +16,12 @@ public class UserServiceImpl implements UserService{
     public Result<?> login(User user) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", user.getUserId()).eq("password", user.getPassword());
-        User user1 = userMapper.selectOne(queryWrapper);
-        if (user1 == null) {
+        User res = userMapper.selectOne(queryWrapper);
+        if (res == null) {
             return Result.error("-1", "用户名或密码错误");
         }
-        String token = TokenUtils.genToken(user1);
-        return Result.success(user1);
+        String token = TokenUtils.genToken(res);
+        res.setToken(token);
+        return Result.success(res);
     }
 }
