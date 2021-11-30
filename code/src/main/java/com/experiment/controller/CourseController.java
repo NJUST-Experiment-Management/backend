@@ -28,7 +28,7 @@ public class CourseController extends BaseController{
     @ApiOperation("根据学生id查课")
     @PostMapping("/studentIdFindArrCourse")
     public Result<?> studentIdFindCourse(@RequestBody User user){
-        return courseService.studentIdFindCourse(user);
+        return courseService.studentIdFindCourse(user.getUserId());
     }
 
     @ApiOperation("根据时间查课")

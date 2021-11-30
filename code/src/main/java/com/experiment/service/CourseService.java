@@ -7,7 +7,7 @@ import com.experiment.entity.Course;
 import java.util.Date;
 
 public interface CourseService {
-    Result<?> studentIdFindCourse(User user);
+    Result<?> studentIdFindCourse(String userId);
     Result<?> addCourse(Course course);
     Result<?> deleteCourse(Course course);
     Result<?> TimeFindCourse(User user,Date date1,Date date2);
