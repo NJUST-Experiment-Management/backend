@@ -2,9 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.experiment.mapper.ArrCourseMapper">
-    <select id="getAllArrCourse" resultType="ArrCourse">
+    <select id="getStudentAllArrCourse" resultType="ArrCourse">
         select *
         from arruser join course on arruser.course_id = corse.course_id
         where student_id = #{userId}
+    </select>
+    <select id="getTeacherAllArrCourse" resultType="ArrCourse">
+        select *
+        from arruser join course on arruser.course_id = corse.course_id
+        where teacher_id = #{userId} and arrange_date &gt;= #{date1} and arrange_date &lt;= #{date2}
+    </select>
+    <select id="getStudentAllTimeArrCourse" resultType="ArrCourse">
+        select *
+        from arruser join course on arruser.course_id = corse.course_id
+        where user_id = #{userId} and arrange_date &gt;= #{date1} and arrange_date &lt;= #{date2}
+    </select>
+    <select id="getAdminAllTimeArrCourse" resultType="ArrCourse">
+        select *
+        from arruser join course on arruser.course_id = corse.course_id
+        where arrange_date &gt;= #{date1} and arrange_date &lt;= #{date2}
     </select>
 </mapper>
