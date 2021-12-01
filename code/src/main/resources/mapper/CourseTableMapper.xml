@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.experiment.mapper.CourseMapper">
+    <select id="IdFindCourse" resultType="CourseTable">
+        select *
+        from course_table
+        where user_id = #{userId}
+    </select>
+    <select id="getIdAllTimeCourse" resultType="CourseTable">
+        select *
+        from course_table
+        where user_id = #{userId} and arrange_date &gt;= #{date1} and arrange_date &lt;= #{date2} and arrange_time &gt;= #{time1} and arrange_time &lt;= #{time2}
+    </select>
+    <select id="getAdminAllTimeArrCourse" resultType="CourseTable">
+        select *
+        from course_table
+        where arrange_date &gt;= #{date1} and arrange_date &lt;= #{date2} and arrange_time &gt;= #{time1} and arrange_time &lt;= #{time2}
+    </select>
+    <select id="courseIdFindCourse" resultType="CourseTable">
+        select *
+        from course_table
+        where course_id=#{courseId}
+    </select>
+</mapper>

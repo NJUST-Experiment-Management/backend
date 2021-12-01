@@ -4,7 +4,12 @@
 <mapper namespace="com.experiment.mapper.ArrUserMapper">
     <select id="studentIdFindArrUser" resultType="ArrUser">
         select *
-        from arruser
-        where student_id = #{userId}
+        from arr_user
+        where user_id = #{userId}
+    </select>
+    <select id="courseIdFindTime" resultType="ArrUser">
+        select DISTINCT ARRANGE_DATE ,ARRANGE_TIME
+        from arr_user
+        where course_id=#{courseId}
     </select>
 </mapper>

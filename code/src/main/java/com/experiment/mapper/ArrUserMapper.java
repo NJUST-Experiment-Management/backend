@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface ArrUserMapper extends BaseMapper<ArrUser> {
     List<ArrUser> studentIdFindCourse(String userId);
+    List<ArrUser> courseIdFindTime(String courseId);
 }

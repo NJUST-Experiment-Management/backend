@@ -12,7 +12,7 @@ class ExperimentApplicationTests {
     }
     @Test
     void testArrCourse(){
-        arrCourseMapper.getStudentAllArrCourse("10001");
+        //arrCourseMapper.getStudentAllArrCourse("10001");
     }
 
 

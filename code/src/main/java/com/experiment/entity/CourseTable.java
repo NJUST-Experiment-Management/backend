@@ -7,15 +7,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@TableName("arr_course")
+@TableName("course_table")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArrCourse {
-    private String courseId;
-    private String courseName;
+public class CourseTable {
+    private String userId;
     private Date arrangeDate;
     private int arrangeTime;
-    private String roomId;
+    private String courseName;
     private String roomName;
+    private int deviceRow;
+    private int deviceCol;
+    private String teacherName;
 }
