@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6947f142-9c7a-4c89-85ad-e4e651bb97df" name="Changes" comment="git add根据时间查课">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/experiment/entity/CourseStudent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/experiment/entity/CourseTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/ArrRoomMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/CourseTableMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArrRoomMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/CourseTableMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/entity/ArrCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/entity/ArrCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/ArrCourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/ArrCourseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/ArrUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/ArrUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/service/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/service/CourseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ArrCourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArrCourseMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ArrUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArrUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/experiment/ExperimentApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/experiment/ExperimentApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/experiment/mapper/CourseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CourseMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +46,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="21ctPa4Z273n1KYNatLD5JdlNga" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -71,8 +70,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mapper" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -86,7 +90,7 @@
       <recent name="com.experiment.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExperimentApplicationTests.testArrCourse">
+  <component name="RunManager" selected="Spring Boot.ExperimentApplication">
     <configuration name="ExperimentApplicationTests.testArrCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="experiment" />
       <extension name="coverage">

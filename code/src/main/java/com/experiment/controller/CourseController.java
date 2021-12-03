@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Date;
 
-@Api(tags = "用户基本操作")
-@RestController
+@Api(tags = "课程相关")
+@RestController("/course")
 public class CourseController extends BaseController{
     @Resource
     UserService userService;
@@ -27,19 +27,19 @@ public class CourseController extends BaseController{
     CourseService courseService;
 
     @ApiOperation("根据id查课")
-    @PostMapping("/IdFindCourse")
+    @GetMapping("/IdFindCourse")
     public Result<?> IdFindCourse(@RequestBody User user){
         return courseService.IdFindCourse(user.getUserId());
     }
 
     @ApiOperation("根据时间查课")
-    @PostMapping("/TimeFindCourse")
+    @GetMapping("/TimeFindCourse")
     public Result<?> TimeFindCourse(User user, Date date1, Date date2,int time1,int time2){
         return courseService.TimeFindCourse(user,date1,date2,time1,time2);
     }
 
     @ApiOperation("根据地点查课")
-    @PostMapping("/AddressFindCourse")
+    @GetMapping("/AddressFindCourse")
     public Result<?> AddressFindCourse(String roomId){
         return courseService.AddressFindCourse(roomId);
     }
@@ -57,10 +57,4 @@ public class CourseController extends BaseController{
         return courseService.deleteCourse(courseId);
     }
 
-
-    @ApiOperation("获取未读消息数量")
-    @GetMapping("/getMessageNum")
-    public Result<?> getMessageNum(){
-        return messageService.getMessageNum(getUserId());
-    }
 }

@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CourseMapper extends BaseMapper<Course> {
-    ArrCourse courseIdFindCourse(String courseId);
+    ArrCourse findCourseByCourseId(String courseId);
 }
