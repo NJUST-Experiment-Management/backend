@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.experiment.mapper.UserMapper">
+    <select id="getUsersByCourseId" resultType="java.lang.String">
+        select *
+        from user
+        where USER_ID in (
+            select USER_ID
+            from course_student
+            where COURSE_ID = #{courseId}
+            )
+    </select>
+</mapper>
