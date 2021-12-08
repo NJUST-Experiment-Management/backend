@@ -1,5 +1,6 @@
 package com.experiment.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -18,4 +19,6 @@ public class Room {
     private int roomRow;
     private int roomCol;
     private String roomStatus;
+    @TableField(exist = false)
+    private int occupiedDevice;
 }

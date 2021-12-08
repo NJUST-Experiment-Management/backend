@@ -1,6 +1,7 @@
 package com.experiment.service;
 
 import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.experiment.common.Result;
 import com.experiment.entity.Device;
 import com.experiment.entity.Room;

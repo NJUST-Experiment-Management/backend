@@ -19,4 +19,5 @@ public class Course {
     private String courseContent;
     private String teacherId;
     private Date createTime;
+    private Boolean isOpening;
 }

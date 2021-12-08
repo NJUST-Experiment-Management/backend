@@ -56,7 +56,9 @@ public class CourseServiceImpl implements CourseService{
     }
 
     public Result<?> addCourse(Course course){
-        return Result.error("-1","功能未实现");
+        if(courseMapper.insert(course) > 0)
+            return Result.success();
+       // return Result.error("-1", "插入数据失败");
     }
 
     @Resource
