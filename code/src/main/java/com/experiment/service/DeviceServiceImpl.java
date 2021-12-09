@@ -8,10 +8,26 @@ import com.experiment.entity.Room;
 import com.experiment.mapper.DeviceMapper;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 public class DeviceServiceImpl implements DeviceService{
     @Resource
     DeviceMapper deviceMapper;
+
+    @Override
+    public Result<?> getAvailableDevice(List<Room> roomList, Date date, Integer time) {
+
+        return Result.success();
+    }
+
+    @Override
+    public  Result<?> getAllDevice(String id){
+        QueryWrapper<Device> queryWrapper=new QueryWrapper<Device>()
+                .eq("roomId",id);
+        List<Device> devices = deviceMapper.selectList(queryWrapper);
+        return Result.success(devices);
+    }
 
     @Override
     public Result<?> updateDeviceById(Device device) {

@@ -8,6 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 public interface DeviceService {
+    /**
+     * <p>通过房间id获取房间内所有的可用机器</p>
+     *
+     * @param roomId 房间号
+     * @return 返回所有的可用设备
+     */
     Result<?> getAllDevice(String roomId);
 
     /**
