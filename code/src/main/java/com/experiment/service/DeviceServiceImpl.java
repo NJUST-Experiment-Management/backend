@@ -3,22 +3,43 @@ package com.experiment.service;
 import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.experiment.common.Result;
+import com.experiment.entity.ArrUser;
 import com.experiment.entity.Device;
 import com.experiment.entity.Room;
+import com.experiment.mapper.ArrUserMapper;
 import com.experiment.mapper.DeviceMapper;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class DeviceServiceImpl implements DeviceService{
     @Resource
     DeviceMapper deviceMapper;
+    @Resource
+    ArrUserMapper arrUserMapper;
 
     @Override
     public Result<?> getAvailableDevice(List<Room> roomList, Date date, Integer time) {
+        QueryWrapper<ArrUser> queryWrapper=new QueryWrapper<ArrUser>()
+                .eq("arrange_date",date)
+                .eq("arrange_time",time);
+        List<ArrUser> arrUsers = arrUserMapper.selectList(queryWrapper);
 
-        return Result.success();
+        List<String> occupiedDeviceId=new ArrayList<>();
+//        for (int i=0;i<arrUsers.size();i++){
+//            occupiedDeviceId.add(arrUsers.get(i).getDeviceId());
+//        }
+        for(ArrUser arrUser : arrUsers){
+            occupiedDeviceId.add(arrUser.getDeviceId());
+        }
+        QueryWrapper<Device> queryWrapper1=new QueryWrapper<Device>()
+                .eq("device_status","AVAILABLE")
+                .in("room_id",roomList)
+                .notIn("device_id",occupiedDeviceId);
+        List<Device> devices = deviceMapper.selectList(queryWrapper1);
+        return Result.success(devices);
     }
 
     @Override
