@@ -15,7 +15,7 @@ public interface RoomService {
      * @param day 带查询日（以星期方式给出）
      * @param time 待查询时间段（以大节方式给出）
      * @param isShareable 是否查询可共享机房
-     * @return Result，封装可用机房列表
+     * @return Result，List-Room
      */
     Result<?> getRoomByTime(Integer week, Integer day, Integer time, Boolean isShareable);
 
@@ -24,7 +24,7 @@ public interface RoomService {
      *
      * @param time 目标大节
      * @param isShareable 是否返回可共享机房
-     * @return Result，含有机房列表
+     * @return Result，List-Room
      */
     Result<?> getRoomByTime(List<Date> dateList, Integer time, Boolean isShareable);
 
@@ -50,10 +50,10 @@ public interface RoomService {
      * <p>根据roomList，填充被占用座位</p>
      *
      * @param roomList 目标room列表
-     * @return Result，封装填充好的room
+     * @param date 日期
+     * @param time 时间
+     * @return Result，List-Room
      */
-    Result<?> getLeftStudentNumber(List<Room> roomList);
+    Result<?> getLeftStudentNumber(List<Room> roomList, Date date, Integer time);
 
-
-    Result<?> getAvailableRoom(List<Date> dateList, Boolean isSharable);
 }

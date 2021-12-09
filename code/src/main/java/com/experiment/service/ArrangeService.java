@@ -36,7 +36,7 @@ public interface ArrangeService {
     Result<?> getArrangementByRoomId(String roomId);
 
     /**
-     * 根据时间段查询课程
+     * <p>根据时间段查询课程<p>
      *
      * @param dateList 需要查询的时间段
      * @return Result，返回List-CourseTable
@@ -49,7 +49,7 @@ public interface ArrangeService {
      * @param date 日期
      * @param time 时间
      * @param roomId 房间
-     * @return Result，List-Course
+     * @return Result，List-ArrCourse
      */
     Result<?> getArrangementBtTimeRoom(Date date, Integer time, String roomId);
 
@@ -68,10 +68,10 @@ public interface ArrangeService {
      * @param course 课程
      * @param date 日期
      * @param time 大节
-     * @param room 房间
+     * @param roomList 房间列表
      * @return Result, 成功与否
      */
-    Result<?> addArrangement(Course course, Date date, Integer time, Room room);
+    Result<?> addArrangement(Course course, Date date, Integer time, List<Room> roomList, Boolean isShareable);
 
     /**
      * <p>学生选择开放性实验</p>

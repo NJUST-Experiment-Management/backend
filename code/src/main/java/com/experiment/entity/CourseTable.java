@@ -19,5 +19,6 @@ public class CourseTable {
     private String roomName;
     private int deviceRow;
     private int deviceCol;
+    private String teacherId;
     private String teacherName;
 }
