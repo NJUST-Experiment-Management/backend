@@ -7,6 +7,7 @@ import com.experiment.mapper.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -79,5 +80,28 @@ public class CourseServiceImpl implements CourseService{
         }
         else
             return Result.error("-1","删除课程失败");
+    }
+
+    @Resource
+    CourseStudentMapper courseStudentMapper;
+    @Override
+    public Result<?> getStudentList(Course course) {
+        String courseId=course.getCourseId();
+        QueryWrapper<CourseStudent> queryWrapper=new QueryWrapper<CourseStudent>()
+                .eq("course_id",courseId);
+        List<CourseStudent> courseStudentsList=courseStudentMapper.selectList(queryWrapper);
+        List<String> studentIdList=new ArrayList<String>();
+        for (int i=0;i<courseStudentsList.size();i++){
+            studentIdList.add(courseStudentsList.get(i).getUserId());
+        }
+        return Result.success(studentIdList);
+    }
+
+    @Override
+    public Result<?> getOpenCourse() {
+        QueryWrapper<Course> queryWrapper=new QueryWrapper<Course>()
+                .eq("is_opening","1");
+        List<Course> openCourseList=courseMapper.selectList(queryWrapper);
+        return Result.success(openCourseList);
     }
 }
