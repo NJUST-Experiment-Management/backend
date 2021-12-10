@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.experiment.mapper.RoomMapper">
+    <select id="getRooms" resultType="Room">
+        select *
+        from room
+    </select>
+    <select id="getOkRoomNum" resultType="Integer">
+        select count(*)
+        from arr_room
+        where room_id=#{roomId} and arrange_date =#{arrangeDate} and arrange_time=#{arrangeTime} and is_shareable=#{isShareable}
+    </select>
+</mapper>

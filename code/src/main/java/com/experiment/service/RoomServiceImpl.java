@@ -1,11 +1,9 @@
 package com.experiment.service;
 
 import com.experiment.common.Result;
-import com.experiment.entity.ArrCourse;
-import com.experiment.entity.Course;
-import com.experiment.entity.Device;
-import com.experiment.entity.Room;
+import com.experiment.entity.*;
 import com.experiment.mapper.ArrCourseMapper;
+import com.experiment.mapper.RoomMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +14,10 @@ import java.util.Set;
 
 @Service
 public class RoomServiceImpl implements RoomService{
-
+    @Resource
+    RoomMapper roomMapper;
+    @Resource
+    DateService dateService;
     @Resource
     DeviceService deviceService;
 
@@ -72,14 +73,52 @@ public class RoomServiceImpl implements RoomService{
         }
         return Result.error("-1","无可用教室");
     }
-
+    @Override
+    public Result<?> getRooms() {
+        return Result.success(roomMapper.getRooms());
+    }
     @Override
     public Result<?> getRoomByTime(Integer week, Integer day, Integer time, Boolean isShareable) {
-        return Result.success();
+        Date date=dateService.getDateByWeekAndDay(week,day);
+        List<Room> roomList=new ArrayList<>();
+        List<Room> room=roomMapper.getRooms();
+        List<Room> rooms= (List<Room>) getLeftStudentNumber(room,date,time).getData();
+        for(Room i:rooms){
+            ArrRoom arrRoom=new ArrRoom(null,i.getRoomId(),null,date,time,isShareable);
+            /** courseId:为知 @param*/
+            if(roomMapper.getOkRoomNum(arrRoom)==0){
+                roomList.add(i);
+            }
+            else if(isShareable==true&&i.getOccupiedDevice()<i.getRoomCol()*i.getRoomRow()){
+                roomList.add(i);
+            }
+
+        }
+        return Result.success(roomList);
+
+    }
+
+    public Result<?> updateRoom(Room room) {
+        if(roomMapper.updateById(room)>0){
+            return Result.success();
+        }
+        else  {
+            return Result.error("-1","机房更新失败");
+        }
     }
 
     @Override
-    public Result<?> updateRoom(Room room) {
-        return Result.success();
+    public Result<?> addRoom(Room room) {
+        if(roomMapper.insert(room)>0){
+            return Result.success();
+        }
+        else {
+            return  Result.error("-1","机房插入失败");
+        }
+    }
+
+    @Override
+    public Result<?> getAvailableRoom(List<Date> dateList, Boolean isSharable) {
+        return null;
     }
 }
