@@ -23,7 +23,7 @@ public interface ArrangeService {
      * <p>返回老师对应的课程</p>
      *
      * @param teacherId 目标教师
-     * @return List-CourseTable
+     * @return List-ArrCourse
      */
     Result<?> getTeacherArrangement(String teacherId);
 
@@ -51,7 +51,7 @@ public interface ArrangeService {
      * @param roomId 房间
      * @return Result，List-ArrCourse
      */
-    Result<?> getArrangementBtTimeRoom(Date date, Integer time, String roomId);
+    Result<?> getArrangementByTimeRoom(Date date, Integer time, String roomId);
 
     /**
      * <p>按照某一精确时间查询对应房间及课程信息，请调用上面那个函数</p>

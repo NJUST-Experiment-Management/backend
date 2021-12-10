@@ -1,5 +1,6 @@
 package com.experiment.service;
 
+import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.experiment.common.Result;
 import com.experiment.entity.Course;
@@ -16,7 +17,7 @@ import java.util.List;
 public class MessageServiceImpl implements MessageService{
     @Resource
     MessageMapper messageMapper;
-    CourseMapper courseMapper;
+    @Resource
     CourseService courseService;
     @Override
     public Result<?> getMessageNum(String userId) {
@@ -26,7 +27,8 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public Result<?> sendMessage(List<String> userList, Message message) {
         for(String userId:userList){
-            message.setReceiveId(userId);
+            message.setReceiverId(userId);
+            message.setMessageId(IdUtil.fastSimpleUUID());
             messageMapper.insert(message);
         }
         return Result.success();

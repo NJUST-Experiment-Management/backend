@@ -44,16 +44,8 @@ public interface RoomService {
      * @param room 目标房间
      * @return Result, 返回成功信息
      */
-    Result<?> getRooms();
     Result<?> updateRoom(Room room);
+    Result<?> getRooms();
     Result<?> addRoom(Room room);
 
-    /**
-     * <p>根据roomList，填充被占用座位</p>
-     *
-     * @param roomList 目标room列表
-     * @return Result，封装填充好的room
-     */
-
-    Result<?> getAvailableRoom(List<Date> dateList, Boolean isSharable);
 }

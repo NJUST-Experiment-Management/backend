@@ -30,7 +30,7 @@ public class ArrangeServiceImpl implements ArrangeService{
     @Resource
     DeviceService deviceService;
     @Resource
-    RoomService roomService;
+    CourseMapper courseMapper;
 
     @Override
     public Result<?> addArrangement(Course course, Date date, Integer time, List<Room> roomList, Boolean isShareable) {
@@ -44,7 +44,7 @@ public class ArrangeServiceImpl implements ArrangeService{
             }
         }
         List<String> studentList = (List<String>) courseService.getStudentList(course).getData();
-        List<Device> deviceList = (List<Device>) deviceService.getAvailableDevice(roomList, date, time);
+        List<Device> deviceList = (List<Device>) deviceService.getAvailableDevice(roomList, date, time).getData();
         if(studentList.size() > deviceList.size()){
             return Result.error("-1", "您选择房间的机位数不足以放下您的学生");
         }
@@ -80,9 +80,14 @@ public class ArrangeServiceImpl implements ArrangeService{
 
     @Override
     public Result<?> getTeacherArrangement(String teacherId) {
-        List<CourseTable> courseTableList = courseTableMapper.selectList(new QueryWrapper<CourseTable>()
+        List<Course> courseList = courseMapper.selectList(new QueryWrapper<Course>()
                 .eq("teacher_id", teacherId));
-        return Result.success(courseTableList);
+        List<String> courseIds = new ArrayList<>();
+        for(Course course : courseList)
+            courseIds.add(course.getCourseId());
+        List<ArrCourse> arrCourses = arrCourseMapper.selectList(new QueryWrapper<ArrCourse>()
+                .in("course_id", courseIds));
+        return Result.success(arrCourses);
     }
 
     @Override
@@ -106,7 +111,7 @@ public class ArrangeServiceImpl implements ArrangeService{
     }
 
     @Override
-    public Result<?> getArrangementBtTimeRoom(Date date, Integer time, String roomId) {
+    public Result<?> getArrangementByTimeRoom(Date date, Integer time, String roomId) {
         List<ArrCourse> arrCourses = arrCourseMapper.selectList(new QueryWrapper<ArrCourse>()
                 .eq("arrange_time", time)
                 .eq("arrange_date", date)
@@ -118,8 +123,7 @@ public class ArrangeServiceImpl implements ArrangeService{
     public Result<?> getArrangementByTime(List<Date> dateList) {
         List<CourseTable> courseTableList = courseTableMapper.selectList(new QueryWrapper<CourseTable>()
                 .in("arrange_date", dateList)
-                .orderByAsc("arrange_date")
-                .orderByAsc("arrange_time"));
+                .orderByAsc("arrange_date", "arrange_time"));
         return Result.success(courseTableList);
     }
 

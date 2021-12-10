@@ -3,12 +3,10 @@ package com.experiment.controller;
 import cn.hutool.core.util.IdUtil;
 import com.experiment.common.Result;
 import com.experiment.entity.Course;
-import com.experiment.entity.Device;
 import com.experiment.entity.User;
 import com.experiment.service.CourseService;
 import com.experiment.service.MessageService;
 import com.experiment.service.UserService;
-import com.experiment.utils.TokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +41,7 @@ public class CourseController extends BaseController{
     @ApiOperation("根据地点查课")
     @GetMapping("/AddressFindCourse")
     public Result<?> AddressFindCourse(String roomId){
-        return courseService.AddressFindCourse(roomId);
+        return courseService.addressFindCourse(roomId);
     }
 
     //未实现

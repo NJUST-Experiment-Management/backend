@@ -8,12 +8,14 @@ import com.experiment.entity.Device;
 import com.experiment.entity.Room;
 import com.experiment.mapper.ArrUserMapper;
 import com.experiment.mapper.DeviceMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class DeviceServiceImpl implements DeviceService{
     @Resource
     DeviceMapper deviceMapper;
@@ -28,15 +30,18 @@ public class DeviceServiceImpl implements DeviceService{
         List<ArrUser> arrUsers = arrUserMapper.selectList(queryWrapper);
 
         List<String> occupiedDeviceId=new ArrayList<>();
-//        for (int i=0;i<arrUsers.size();i++){
-//            occupiedDeviceId.add(arrUsers.get(i).getDeviceId());
-//        }
+        occupiedDeviceId.add("");
+        List<String> roomIds = new ArrayList<>();
+        roomIds.add("");
         for(ArrUser arrUser : arrUsers){
             occupiedDeviceId.add(arrUser.getDeviceId());
         }
+        for(Room room : roomList){
+            roomIds.add(room.getRoomId());
+        }
         QueryWrapper<Device> queryWrapper1=new QueryWrapper<Device>()
                 .eq("device_status","AVAILABLE")
-                .in("room_id",roomList)
+                .in("room_id", roomIds)
                 .notIn("device_id",occupiedDeviceId);
         List<Device> devices = deviceMapper.selectList(queryWrapper1);
         return Result.success(devices);
@@ -45,11 +50,12 @@ public class DeviceServiceImpl implements DeviceService{
     @Override
     public  Result<?> getAllDevice(String id){
         QueryWrapper<Device> queryWrapper=new QueryWrapper<Device>()
-                .eq("roomId",id);
+                .eq("room_id",id);
         List<Device> devices = deviceMapper.selectList(queryWrapper);
         return Result.success(devices);
     }
 
+    //TODO 更进一步，当设备设为不可用时，帮忙把将要在这里上课的学生调个座位
     @Override
     public Result<?> updateDeviceById(Device device) {
         if(deviceMapper.updateById(device)>0){

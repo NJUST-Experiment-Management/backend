@@ -20,6 +20,8 @@ public class RoomServiceImpl implements RoomService{
     DateService dateService;
     @Resource
     DeviceService deviceService;
+    @Resource
+    ArrCourseMapper arrCourseMapper;
 
     public Result<?> getLeftStudentNumber(List<Room> roomList, Date date, Integer time){
         for(int i = 0; i < roomList.size(); i++){
@@ -31,16 +33,16 @@ public class RoomServiceImpl implements RoomService{
         return Result.success(roomList);
     }
 
+    //TODO 迷惑函数？
     public Result<?> getRoomByTime(List<Date> dateList, Integer time, Boolean isShareable){
         return Result.success();
     }
-    @Resource
-    ArrCourseMapper arrCourseMapper;
+
+    //TODO 调用迷惑函数，if内语句有效，if外语句无效
     public Result<?> getRoomByOpenCourse(Course course, Date date, Integer time){
         List<Room> roomList_out=new ArrayList<>();
         List<String> courseIdList=arrCourseMapper.getArrCourseByCourseIdAndTime(course.getCourseId(),date,time);
         if(courseIdList!=null){
-            //todo 将时间转换为week，day
             List<Room> roomList = new ArrayList<>();
             for(int i=0;i<courseIdList.size();i++){
                 Room room=new Room();
@@ -49,8 +51,9 @@ public class RoomServiceImpl implements RoomService{
             }
             Result result=getLeftStudentNumber(roomList,date,time);
             List<Room> roomList_temp=(List<Room>) result.getData();
+            System.out.println(result.getData());
             for(int i=0;i<roomList_temp.size();i++){
-                if(roomList_temp.get(i).getRoomRow()*roomList_temp.get(i).getRoomCol()-roomList_temp.get(i).getOccupiedDevice()>=3){
+                if(roomList_temp.get(i).getOccupiedDevice()>=3){
                     roomList_out.add(roomList_temp.get(i));
                 }
             }
@@ -64,7 +67,7 @@ public class RoomServiceImpl implements RoomService{
         Result result=getRoomByTime(dateList,time, Boolean.TRUE);
         List<Room> avialableListRoom=(List<Room>)result.getData();
         for(int i=0;i<avialableListRoom.size();i++){
-            if(avialableListRoom.get(i).getRoomRow()*avialableListRoom.get(i).getRoomCol()-avialableListRoom.get(i).getOccupiedDevice()>=3){
+            if(avialableListRoom.get(i).getOccupiedDevice()>=3){
                 roomList_out.add(avialableListRoom.get(i));
             }
         }
@@ -75,13 +78,13 @@ public class RoomServiceImpl implements RoomService{
     }
     @Override
     public Result<?> getRooms() {
-        return Result.success(roomMapper.getRooms());
+        return Result.success(roomMapper.selectList(null));
     }
     @Override
     public Result<?> getRoomByTime(Integer week, Integer day, Integer time, Boolean isShareable) {
         Date date=dateService.getDateByWeekAndDay(week,day);
         List<Room> roomList=new ArrayList<>();
-        List<Room> room=roomMapper.getRooms();
+        List<Room> room= roomMapper.selectList(null);
         List<Room> rooms= (List<Room>) getLeftStudentNumber(room,date,time).getData();
         for(Room i:rooms){
             ArrRoom arrRoom=new ArrRoom(null,i.getRoomId(),null,date,time,isShareable);
@@ -98,6 +101,7 @@ public class RoomServiceImpl implements RoomService{
 
     }
 
+    //TODO 更进一步，当状态变为不可用时，给将要在这里上课的全体人员发送通知，并删除相关安排
     public Result<?> updateRoom(Room room) {
         if(roomMapper.updateById(room)>0){
             return Result.success();
@@ -115,10 +119,5 @@ public class RoomServiceImpl implements RoomService{
         else {
             return  Result.error("-1","机房插入失败");
         }
-    }
-
-    @Override
-    public Result<?> getAvailableRoom(List<Date> dateList, Boolean isSharable) {
-        return null;
     }
 }

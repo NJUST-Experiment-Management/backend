@@ -35,6 +35,7 @@ public class RoomController extends BaseController{
     @GetMapping("/room/period")
     public Result<?> getRoomWithPeriod(@RequestParam Integer startWeek, @RequestParam Integer lastWeek, @RequestParam Integer day, @RequestParam Integer arrangeTime,
                                        @RequestParam Boolean isSharable){
+        return null;
       //  return roomService.getRoomByTime(startWeek, lastWeek, day, arrangeTime, isSharable);
     }
 

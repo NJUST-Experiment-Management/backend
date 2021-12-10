@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService{
         return Result.success(res);
     }
 
+    //TODO 待测试
     @Override
     public Result<?> importUserByExcel(MultipartFile file) {
         Result<?> result = readUsersByExcel(file);
@@ -72,11 +73,7 @@ public class UserServiceImpl implements UserService{
         return Result.success(userMapper.selectList(queryWrapper));
     }
 
-    @Override
-    public Result<?> getUsersByCourseId(String courseId) {
-        return Result.success(userMapper.getUsersByCourseId(courseId));
-    }
-
+    //TODO 待测试
     @Override
     public Result<?> readUsersByExcel(MultipartFile file) {
         Workbook workbook;

@@ -55,11 +55,4 @@ public interface UserService {
      */
     Result<?> getUserById(List<String> userId);
 
-    /**
-     * <p>根据课程id，获取选学该课程的人员名单</p>
-     *
-     * @param courseId 对应课程的编号
-     * @return Result，包含选学该课程的学生名单，List可能为空
-     */
-    Result<?> getUsersByCourseId(String courseId);
 }

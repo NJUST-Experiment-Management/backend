@@ -7,6 +7,5 @@ import com.experiment.entity.Room;
 import java.util.List;
 
 public interface RoomMapper extends BaseMapper<Room> {
-    List<Room> getRooms();
     Integer getOkRoomNum(ArrRoom arrRoom);
 }
