@@ -113,11 +113,8 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public Result<?> addRoom(Room room) {
-        if(roomMapper.insert(room)>0){
-            return Result.success();
-        }
-        else {
-            return  Result.error("-1","机房插入失败");
-        }
+        if(roomMapper.insert(room)<0)
+            return Result.error("-1", "插入机房失败，请刷新后重试");
+        return deviceService.addDevice(room);
     }
 }

@@ -45,7 +45,20 @@ public interface RoomService {
      * @return Result, 返回成功信息
      */
     Result<?> updateRoom(Room room);
+
+    /**
+     * <p>返回数据库内现存的所有机房</p>
+     *
+     * @return Result，封装List-Room
+     */
     Result<?> getRooms();
+
+    /**
+     * <p>加入新的机房</p>
+     *
+     * @param room 机房
+     * @return Result，表成功与否
+     */
     Result<?> addRoom(Room room);
 
 }

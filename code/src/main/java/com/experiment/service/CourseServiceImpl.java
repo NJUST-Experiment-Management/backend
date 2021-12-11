@@ -28,7 +28,7 @@ public class CourseServiceImpl implements CourseService{
     ArrRoomMapper arrRoomMapper;
 
     @Override
-    public Result<?> IdFindCourse(String userId){
+    public Result<?> idFindCourse(String userId){
         List<CourseTable> courseTableList=(List<CourseTable>) courseTableMapper.IdFindCourse(userId);
         if (courseTableList == null) {
             return Result.error("-1", "无课程安排");
@@ -46,7 +46,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Result<?> TimeFindCourse(User user, Date date1, Date date2,int time1,int time2){
+    public Result<?> timeFindCourse(User user, Date date1, Date date2, int time1, int time2){
         String userType=user.getUserType();
         if(userType.equals("TEACHER") ||userType.equals("STUDENT")){
             List<CourseTable> courseTableList=(List<CourseTable>) courseTableMapper.getIdAllTimeCourse(user.getUserId(),date1,date2,time1,time2);

@@ -37,8 +37,8 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public Result<?> sendMessage(Course course, Message message) {
         List<String> userList= (List<String>) courseService.getStudentList(course).getData();
-        String tearcherId=course.getTeacherId();
-        userList.add(tearcherId);
+        String teacherId=course.getTeacherId();
+        userList.add(teacherId);
         sendMessage(userList,message);
         return null;
     }

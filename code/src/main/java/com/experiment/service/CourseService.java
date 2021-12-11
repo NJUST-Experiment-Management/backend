@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface CourseService {
-    Result<?> IdFindCourse(String userId);
+    Result<?> idFindCourse(String userId);
 
     /**
      * <p>传入course，向数据库插入course元组 </p>
@@ -42,7 +42,7 @@ public interface CourseService {
      * @return 删除结果
      */
     Result<?> deleteCourse(String courseId);
-    Result<?> TimeFindCourse(User user,Date date1,Date date2,int time1,int time2);
+    Result<?> timeFindCourse(User user, Date date1, Date date2, int time1, int time2);
     Result<?> addressFindCourse(String roomId);
 
     /**
