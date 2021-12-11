@@ -59,26 +59,26 @@ public class DateServiceImpl implements DateService{
     public DateMsg getDateWeekTimeAndTerm(Date date) {
         Term term=termMapper.getNearTerm(date);
         Integer weekTime=0;
-        /** @Param weekTime 周次 */
+        /**@Param weekTime 周次 */
 
         Integer dayOfWeekTerm= DateUtil.dayOfWeek(term.getBeginTime());
-        /** @Param dayOfweekTerm 是这学期第一天是星期几 */
+        /**@Param dayOfweekTerm 是这学期第一天是星期几 */
 
         Integer dayOfWeek= DateUtil.dayOfWeek(date);
         /** @param dayOfWeek 该日期是星期几*/
 
-        Integer dayDistance=DateUtil.compare(date,term.getBeginTime());
+        long dayDistance=DateUtil.betweenDay(date,term.getBeginTime(),true);
         /** @param dayDistance 两天的日期差距*/
 
         if(dayOfWeekTerm==0){
             dayDistance=dayDistance+6;
-            weekTime=dayDistance/7+1;
+            weekTime= Math.toIntExact(dayDistance / 7 + 1);
         }
         else if(dayOfWeekTerm==1){
-            weekTime=dayDistance/7+1;
+            weekTime= Math.toIntExact(dayDistance / 7 + 1);
         }
         else{
-            weekTime=dayDistance/7+1;
+            weekTime= Math.toIntExact(dayDistance / 7 + 1);
             if(dayDistance%7+dayOfWeekTerm>7)
                 weekTime=weekTime+1;
         }
