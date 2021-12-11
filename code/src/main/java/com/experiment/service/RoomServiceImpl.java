@@ -1,5 +1,6 @@
 package com.experiment.service;
 
+import cn.hutool.core.date.DateUtil;
 import com.experiment.common.Result;
 import com.experiment.entity.*;
 import com.experiment.mapper.ArrCourseMapper;
@@ -7,10 +8,7 @@ import com.experiment.mapper.RoomMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class RoomServiceImpl implements RoomService{
@@ -33,12 +31,31 @@ public class RoomServiceImpl implements RoomService{
         return Result.success(roomList);
     }
 
-    //TODO 迷惑函数？
     public Result<?> getRoomByTime(List<Date> dateList, Integer time, Boolean isShareable){
-        return Result.success();
+        List<Room> roomList=null;
+        HashMap<Room, Integer> mp = new HashMap<Room,Integer>();
+        for(Date date:dateList){
+            DateMsg dg=dateService.getDateWeekTimeAndTerm(date);
+            roomList= (List<Room>) getRoomByTime(dg.getWeektime(), DateUtil.dayOfWeek(date),time,isShareable).getData();
+            for(Room x:roomList){
+                if(!mp.containsKey(x))
+                    mp.put(x,1);
+                int cnt = mp.get(x)+1;
+                mp.put(x,cnt);
+            }
+        }
+        int cnt = 0;
+        for(Map.Entry<Room, Integer> it:mp.entrySet()){
+            cnt = cnt>it.getValue()?cnt:it.getValue();
+        }
+        List<Room> res = new ArrayList<>();
+        for(Map.Entry<Room, Integer> it:mp.entrySet()){
+            if(cnt == it.getValue())
+                res.add(it.getKey());
+        }
+        return Result.success(res);
     }
 
-    //TODO 调用迷惑函数，if内语句有效，if外语句无效
     public Result<?> getRoomByOpenCourse(Course course, Date date, Integer time){
         List<Room> roomList_out=new ArrayList<>();
         List<String> courseIdList=arrCourseMapper.getArrCourseByCourseIdAndTime(course.getCourseId(),date,time);
@@ -51,13 +68,12 @@ public class RoomServiceImpl implements RoomService{
             }
             Result result=getLeftStudentNumber(roomList,date,time);
             List<Room> roomList_temp=(List<Room>) result.getData();
-            System.out.println(result.getData());
             for(int i=0;i<roomList_temp.size();i++){
                 if(roomList_temp.get(i).getOccupiedDevice()>=3){
                     roomList_out.add(roomList_temp.get(i));
                 }
             }
-            if(roomList_out!=null){
+            if(roomList_out.size() > 0){
                 return Result.success(roomList_out);
             }
         }
@@ -65,6 +81,7 @@ public class RoomServiceImpl implements RoomService{
         dateList.add(date);
         //todo 查找机房的时候只查找了可共享的，没用的能不能查到
         Result result=getRoomByTime(dateList,time, Boolean.TRUE);
+        System.out.println(result);
         List<Room> avialableListRoom=(List<Room>)result.getData();
         for(int i=0;i<avialableListRoom.size();i++){
             if(avialableListRoom.get(i).getOccupiedDevice()>=3){
@@ -76,6 +93,7 @@ public class RoomServiceImpl implements RoomService{
         }
         return Result.error("-1","无可用教室");
     }
+
     @Override
     public Result<?> getRooms() {
         return Result.success(roomMapper.selectList(null));

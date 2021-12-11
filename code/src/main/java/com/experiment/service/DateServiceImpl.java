@@ -43,7 +43,7 @@ public class DateServiceImpl implements DateService{
     public Date getDateByWeekAndDay(Integer week, Integer day) {
         Date currentDate=DateUtil.date();
         Term term=termMapper.getNearTerm(currentDate);
-        Date date=DateUtil.offsetWeek(currentDate,week-1);
+        Date date=DateUtil.offsetWeek(term.getBeginTime(),week-1);
         Integer dayOfDate=DateUtil.dayOfWeek(date);
         if(day==0)
             day=7;
@@ -59,10 +59,10 @@ public class DateServiceImpl implements DateService{
     public DateMsg getDateWeekTimeAndTerm(Date date) {
         Term term=termMapper.getNearTerm(date);
         Integer weekTime=0;
-        /**@Param weekTime 周次 */
+        /** @Param weekTime 周次 */
 
         Integer dayOfWeekTerm= DateUtil.dayOfWeek(term.getBeginTime());
-        /**@Param dayOfweekTerm 是这学期第一天是星期几 */
+        /** @Param dayOfweekTerm 是这学期第一天是星期几 */
 
         Integer dayOfWeek= DateUtil.dayOfWeek(date);
         /** @param dayOfWeek 该日期是星期几*/
