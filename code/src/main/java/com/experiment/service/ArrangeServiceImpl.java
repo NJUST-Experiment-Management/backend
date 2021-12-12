@@ -32,7 +32,6 @@ public class ArrangeServiceImpl implements ArrangeService{
     @Resource
     CourseMapper courseMapper;
 
-    @Override
     public Result<?> addArrangement(Course course, Date date, Integer time, List<Room> roomList, Boolean isShareable) {
         QueryWrapper<ArrRoom> queryWrapper = new QueryWrapper<ArrRoom>()
                 .eq("arrange_date",date)
@@ -45,6 +44,15 @@ public class ArrangeServiceImpl implements ArrangeService{
         }
         List<String> studentList = (List<String>) courseService.getStudentList(course).getData();
         List<Device> deviceList = (List<Device>) deviceService.getAvailableDevice(roomList, date, time).getData();
+
+        List<ArrUser> arrUsers = arrUserMapper.selectList(new QueryWrapper<ArrUser>()
+                .eq("arrange_date", date)
+                .eq("arrange_time", time)
+                .in("user_id", studentList));
+        if(arrUsers != null && arrUsers.size() > 0){
+            return Result.error("-1", "您课程的学生在安排的目标时间已有其它课程，请重新选择时间段");
+        }
+
         if(studentList.size() > deviceList.size()){
             return Result.error("-1", "您选择房间的机位数不足以放下您的学生");
         }
@@ -168,5 +176,19 @@ public class ArrangeServiceImpl implements ArrangeService{
         }
         arrUserMapper.insert(new ArrUser(IdUtil.fastSimpleUUID(), student.getUserId(), date, time, course.getCourseId(), deviceList.get(0).getDeviceId()));
         return Result.success();
+    }
+
+    @Override
+    public Result<?> clearArrangementByTime(Date date, Integer time) {
+        List<ArrCourse> arrCourses = arrCourseMapper.selectList(new QueryWrapper<ArrCourse>()
+                .eq("arrange_date", date)
+                .eq("arrange_time", time));
+        arrUserMapper.delete(new QueryWrapper<ArrUser>()
+                .eq("arrange_date", date)
+                .eq("arrange_time",time));
+        arrRoomMapper.delete(new QueryWrapper<ArrRoom>()
+                .eq("arrange_date", date)
+                .eq("arrange_time", time));
+        return Result.success(arrCourses);
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,16 @@ public class RoomController extends BaseController{
     @GetMapping("/room/all")
     public Result<?> getAllRooms(){
         return roomService.getRooms();
+    }
+
+    @ApiOperation("获取所有可用的机房列表，含有机位信息")
+    @GetMapping("/room/available")
+    public Result<?> getAllAvailableRoom(){
+        List<Date> dateList = new ArrayList<>();
+        dateList.add(new Date());
+        List<Room> roomList = (List<Room>) roomService.getRoomByTime(dateList, 0, true).getData();
+        deviceService.getAvailableDevice(roomList, new Date(), 0);
+        return Result.success(roomList);
     }
 
     @ApiOperation("根据时间段查可用机房")
@@ -64,15 +75,19 @@ public class RoomController extends BaseController{
     }
 
     @ApiOperation("增加新的机房")
-    @PostMapping("room/add")
+    @PostMapping("/room/add")
     public Result<?> addRoom(@RequestBody Room room){
         room.setRoomId(IdUtil.fastSimpleUUID());
         return roomService.addRoom(room);
     }
 
-    @ApiOperation("改变机房状态")
+    @ApiOperation("开关机房")
     @PostMapping("/changeStatus/room")
     public Result<?> changeRoomStatus(@RequestBody Room room){
+        if(room.getRoomStatus().equals("DISABLED"))
+            room.setRoomStatus("AVAILABLE");
+        else
+            room.setRoomStatus("DISABLED");
         return roomService.updateRoom(room);
     }
 

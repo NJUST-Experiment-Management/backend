@@ -18,6 +18,8 @@ public interface CourseService {
      */
     Result<?> addCourse(Course course);
 
+    Result<?> getCourseById(String courseId);
+
     /**
      * <p>传入新Course，以ID为标识更新旧Course</p>
      *

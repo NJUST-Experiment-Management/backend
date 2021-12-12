@@ -94,4 +94,13 @@ public interface ArrangeService {
      * @return Result, 成功与否
      */
     Result<?> quitOpenCourse(User student, Date date, Integer time);
+
+    /**
+     * <p>清空某时段的所有安排</p>
+     *
+     * @param date 日期
+     * @param time 时间
+     * @return List-ArrCourse，受影响的课程单
+     */
+    Result<?> clearArrangementByTime(Date date, Integer time);
 }

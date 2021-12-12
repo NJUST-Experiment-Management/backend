@@ -44,6 +44,11 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public Result<?> getCourseById(String courseId) {
+        return Result.success(courseMapper.selectById(courseId));
+    }
+
+    @Override
     public Result<?> addressFindCourse(String roomId){
         List<ArrCourse> arrCourseList= arrCourseMapper.addressFindCourse(roomId);
         if(arrCourseList==null)
