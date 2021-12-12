@@ -37,6 +37,10 @@ public class UserController extends BaseController{
         return messageService.getMessageNum(getUserId());
     }
 
+    @ApiOperation("获取用户全部消息")
+    @GetMapping("/getMessages")
+    public Result<?> getMessages(){ return  messageService.getMessages(getUserId());}
+
     @ApiOperation("更新用户信息")
     @PostMapping("/updateUser")
     public Result<?> updateUserMsg(@RequestBody User user){
@@ -62,4 +66,5 @@ public class UserController extends BaseController{
     public Result<?> sendMessage(@RequestBody Message message, @RequestBody List<String> userIds){
         return messageService.sendMessage(userIds, message);
     }
+
 }

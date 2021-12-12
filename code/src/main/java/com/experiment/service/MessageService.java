@@ -23,4 +23,5 @@ public interface MessageService {
      * @return 成功与否
      */
     Result<?> sendMessage(Course course,Message message);
+    Result<?> getMessages(String userId);
 }

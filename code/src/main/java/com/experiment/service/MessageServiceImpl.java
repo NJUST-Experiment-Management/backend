@@ -42,4 +42,8 @@ public class MessageServiceImpl implements MessageService{
         sendMessage(userList,message);
         return null;
     }
+    @Override
+    public Result<?> getMessages(String userId) {
+        return Result.success(messageMapper.getMessages(userId));
+    }
 }

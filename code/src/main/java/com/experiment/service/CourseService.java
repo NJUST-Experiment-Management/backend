@@ -59,4 +59,5 @@ public interface CourseService {
      * @return Result，List-Course
      */
     Result<?> getOpenCourse();
+    Result<?> getArrCourseById(String courseId);
 }

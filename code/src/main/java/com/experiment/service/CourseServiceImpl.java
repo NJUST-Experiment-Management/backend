@@ -141,4 +141,8 @@ public class CourseServiceImpl implements CourseService{
         List<Course> openCourseList=courseMapper.selectList(queryWrapper);
         return Result.success(openCourseList);
     }
+    @Override
+    public Result<?> getArrCourseById(String courseId) {
+        return Result.success(arrCourseMapper.getArrCourseByCourseId(courseId));
+    }
 }
