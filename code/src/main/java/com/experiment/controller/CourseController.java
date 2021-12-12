@@ -123,7 +123,7 @@ public class CourseController extends BaseController {
 
     @ApiOperation("获取某时间所有房间的课程安排")
     @GetMapping("/arrangement/roomCourse/all")
-    public Result<?> getAllArrangement(@RequestParam Date date, @RequestParam Integer time) {
+    public Result<?> getAllArrangement(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam Integer time) {
         return arrangeService.getArrangementByTime(date, time);  // 对象数组Object[List<Room>, List<List<Course>>]
     }
 

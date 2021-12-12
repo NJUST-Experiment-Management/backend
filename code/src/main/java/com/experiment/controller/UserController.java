@@ -8,10 +8,8 @@ import com.experiment.service.MessageService;
 import com.experiment.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.val;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -65,6 +63,16 @@ public class UserController extends BaseController{
     @PostMapping("/message/sendUsers")
     public Result<?> sendMessage(@RequestBody Message message, @RequestBody List<String> userIds){
         return messageService.sendMessage(userIds, message);
+    }
+
+    @ApiOperation("设置管理员")
+    @GetMapping ("/setAdmin")
+    public Result<?> setAdmin(@RequestParam String userId){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        User user = (User) userService.getUserById(userId).getData();
+        user.setUserType("ADMIN");
+        return userService.updateUserById(user);
     }
 
 }

@@ -94,6 +94,10 @@ public class RoomController extends BaseController{
     @ApiOperation("改变器械状态")
     @PostMapping("/changeStatus/device")
     public Result<?> changeDeviceStaus(@RequestBody Device device){
+        if(device.getDeviceStatus().equals("DISABLED"))
+            device.setDeviceStatus("AVAILABLE");
+        else
+            device.setDeviceStatus("DISABLED");
         return deviceService.updateDeviceById(device);
     }
 
