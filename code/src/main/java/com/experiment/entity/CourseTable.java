@@ -1,6 +1,5 @@
 package com.experiment.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,16 +7,18 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@TableName("course")
+@TableName("course_table")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
-    @TableId("course_id")
-    private String courseId;
+public class CourseTable {
+    private String userId;
+    private Date arrangeDate;
+    private int arrangeTime;
     private String courseName;
-    private String courseContent;
+    private String roomName;
+    private int deviceRow;
+    private int deviceCol;
     private String teacherId;
-    private Date createTime;
-    private Boolean isOpening;
+    private String teacherName;
 }

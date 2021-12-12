@@ -8,4 +8,9 @@
         where receiver_id = #{userId} and
               is_read = false
     </select>
+    <select id="getMessages" resultType="Message">
+        select *
+        from message
+        where receiver_id = #{userId}
+    </select>
 </mapper>

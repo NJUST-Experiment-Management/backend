@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.experiment.mapper.ArrCourseMapper">
+    <select id="addressFindCourse" resultType="ArrCourse">
+        select *
+        from arr_course
+        where room_id = #{roomId}
+    </select>
+    <select id="getArrCourseByCourseIdAndTime" resultType="String">
+        select DISTINCT room_id
+        from arr_course
+        where course_id=#{courseId} and arrange_date=#{date} and arrange_time=#{time}
+    </select>
+    <select id="getArrCourseByCourseId" resultType="String">
+        select DISTINCT room_id
+        from arr_course
+        where course_id=#{courseId}
+    </select>
+</mapper>
