@@ -2,15 +2,14 @@ package com.experiment.controller;
 
 import cn.hutool.core.util.IdUtil;
 import com.experiment.common.Result;
+import com.experiment.entity.ArrUser;
 import com.experiment.entity.Course;
 import com.experiment.entity.Device;
 import com.experiment.entity.Room;
-import com.experiment.service.ArrangeService;
-import com.experiment.service.DateService;
-import com.experiment.service.DeviceService;
-import com.experiment.service.RoomService;
+import com.experiment.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.val;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +31,8 @@ public class RoomController extends BaseController{
     ArrangeService arrangeService;
     @Resource
     DateService dateService;
+    @Resource
+    UserService userService;
 
     @ApiOperation("获取所有机房的列表")
     @GetMapping("/room/all")
@@ -109,7 +110,10 @@ public class RoomController extends BaseController{
     public Result<?> getDeviceHistory(@RequestParam String deviceId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date arrangeDate, @RequestParam Integer arrangeTime){
         if(!getUser().getUserType().equals("ADMIN"))
             return Result.error("-1", "无权限");
-        return arrangeService.getArrangementByDeviceId(deviceId, arrangeDate, arrangeTime);
+        List<ArrUser> data = (List<ArrUser>) arrangeService.getArrangementByDeviceId(deviceId, arrangeDate, arrangeTime).getData();
+        if(data.size() == 0)
+            return Result.success(null);
+        return userService.getUserById(data.get(0).getUserId());
     }
 
 
