@@ -4,6 +4,7 @@ import com.experiment.common.Result;
 import com.experiment.entity.Course;
 import com.experiment.entity.Message;
 import com.experiment.entity.User;
+import com.experiment.service.CourseService;
 import com.experiment.service.MessageService;
 import com.experiment.service.UserService;
 import io.swagger.annotations.Api;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Api(tags = "用户基本操作")
@@ -20,6 +22,8 @@ import java.util.List;
 public class UserController extends BaseController{
     @Resource
     UserService userService;
+    @Resource
+    CourseService courseService;
     @Resource
     MessageService messageService;
 
@@ -57,15 +61,37 @@ public class UserController extends BaseController{
         return userService.importUserByExcel(file);
     }
 
+    @ApiOperation("向某身份群体发送消息")
+    @PostMapping("/message/sendUserType")
+    public Result<?> sendMessageByType(@RequestBody Message message, @RequestBody String userType){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        Object data = userService.getUserByType(userType).getData();
+        if(data == null)
+            return Result.error("-1", "系统错误，刷新重试");
+        List<String> stringList = new ArrayList<>();
+        for(User user : (List<User>) data){
+            stringList.add(user.getUserType());
+        }
+        return messageService.sendMessage(stringList, message);
+    }
+
     @ApiOperation("向班群体发送信息")
     @PostMapping("/message/sendCourse")
-    public Result<?> sendMessage(@RequestBody Message message, @RequestBody Course course){
-        return messageService.sendMessage(course, message);
+    public Result<?> sendMessageByCourse(@RequestBody Message message, @RequestBody String courseId){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        Object data = courseService.getCourseById(courseId).getData();
+        if(data instanceof Course)
+            return messageService.sendMessage((Course) data, message);
+        return Result.error("-1","不存在此课程");
     }
 
     @ApiOperation("向多位用户发送信息")
     @PostMapping("/message/sendUsers")
     public Result<?> sendMessage(@RequestBody Message message, @RequestBody List<String> userIds){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
         return messageService.sendMessage(userIds, message);
     }
 

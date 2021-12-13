@@ -1,6 +1,7 @@
 package com.experiment.service;
 
 import com.experiment.common.Result;
+import com.experiment.entity.ArrCourse;
 import com.experiment.entity.Course;
 import com.experiment.entity.Room;
 import com.experiment.entity.User;
@@ -26,6 +27,16 @@ public interface ArrangeService {
      * @return List-ArrCourse
      */
     Result<?> getTeacherArrangement(String teacherId);
+
+    /**
+     * <p>返回该机位的所有使用人员</p>
+     *
+     * @param deviceId 机位编号
+     * @param time 所在大节
+     * @param date 所在日期
+     * @return Result，封装ArrUser
+     */
+    Result<?> getArrangementByDeviceId(String deviceId, Date date, Integer time);
 
     /**
      * <p>返回该房间上过的课程</p>
@@ -103,4 +114,12 @@ public interface ArrangeService {
      * @return List-ArrCourse，受影响的课程单
      */
     Result<?> clearArrangementByTime(Date date, Integer time);
+
+    /**
+     * <p>按照ArrCourse列表删除对应安排</p>
+     *
+     * @param arrCourses 目标arrCourse
+     * @return Result，成功与否
+     */
+    Result<?> deleteArrangementByArrCourse(List<ArrCourse> arrCourses);
 }

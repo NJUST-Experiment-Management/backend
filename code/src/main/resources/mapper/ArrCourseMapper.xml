@@ -12,9 +12,4 @@
         from arr_course
         where course_id=#{course_id} and arrange_date=#{date} and arrange_time=#{time}
     </select>
-    <select id="getArrCourseByCourseId" resultType="String">
-        select DISTINCT room_id
-        from arr_course
-        where course_id=#{courseId}
-    </select>
 </mapper>

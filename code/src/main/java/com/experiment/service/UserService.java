@@ -55,4 +55,12 @@ public interface UserService {
      */
     Result<?> getUserById(List<String> userId);
 
+    /**
+     * <p>获取某身份的所有人员信息</p>
+     *
+     * @param userType 人员种类
+     * @return Result，成功与否
+     */
+    Result<?> getUserByType(String userType);
+
 }

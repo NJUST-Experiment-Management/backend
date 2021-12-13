@@ -106,4 +106,11 @@ public class UserServiceImpl implements UserService{
             return Result.error("-1", "文件名不能为空");
         }
     }
+
+    @Override
+    public Result<?> getUserByType(String userType) {
+        List<User> users = userMapper.selectList(new QueryWrapper<User>()
+                .eq("user_type", userType));
+        return Result.success(users);
+    }
 }

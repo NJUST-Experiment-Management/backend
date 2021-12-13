@@ -209,4 +209,12 @@ public class CourseController extends BaseController {
             return Result.error("-1", "无权限");
         return courseService.getArrCourseById(courseId);
     }
+
+    @ApiOperation("教师删除对应安排")
+    @PostMapping("/arrangement/delete")
+    public Result<?> deleteArrangement(@RequestBody List<ArrCourse> arrCourses){
+        if(getUser().getUserType().equals("STUDENT"))
+            return Result.error("-1", "无权限");
+        return arrangeService.deleteArrangementByArrCourse(arrCourses);
+    }
 }

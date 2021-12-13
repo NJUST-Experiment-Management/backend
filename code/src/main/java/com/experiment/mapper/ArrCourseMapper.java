@@ -11,5 +11,4 @@ import java.util.List;
 public interface ArrCourseMapper extends BaseMapper<ArrCourse> {
     List<ArrCourse> addressFindCourse(String roomId);
     List<String> getArrCourseByCourseIdAndTime(@Param("course_id") String courseId,@Param("date") Date date,@Param("time") Integer time);
-    List<ArrCourse> getArrCourseByCourseId(String courseId);
 }

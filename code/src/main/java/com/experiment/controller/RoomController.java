@@ -83,6 +83,8 @@ public class RoomController extends BaseController{
     @ApiOperation("开关机房")//ok
     @PostMapping("/changeStatus/room")
     public Result<?> changeRoomStatus(@RequestBody Room room){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
         if(room.getRoomStatus().equals("DISABLED"))
             room.setRoomStatus("AVAILABLE");
         else
@@ -93,6 +95,8 @@ public class RoomController extends BaseController{
     @ApiOperation("改变器械状态")//ok
     @PostMapping("/changeStatus/device")
     public Result<?> changeDeviceStaus(@RequestBody Device device){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
         if(device.getDeviceStatus().equals("DISABLED"))
             device.setDeviceStatus("AVAILABLE");
         else
@@ -100,6 +104,13 @@ public class RoomController extends BaseController{
         return deviceService.updateDeviceById(device);
     }
 
+    @ApiOperation("获取机位历史记录")
+    @GetMapping("/device/history")
+    public Result<?> getDeviceHistory(@RequestParam String deviceId, @RequestParam Date arrangeDate, @RequestParam Integer arrangeTime){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        return arrangeService.getArrangementByDeviceId(deviceId, arrangeDate, arrangeTime);
+    }
 
 
     @ApiOperation("获取某房间内所有的机位")

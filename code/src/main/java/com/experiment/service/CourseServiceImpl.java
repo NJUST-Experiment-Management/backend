@@ -148,6 +148,8 @@ public class CourseServiceImpl implements CourseService{
     }
     @Override
     public Result<?> getArrCourseById(String courseId) {
-        return Result.success(arrCourseMapper.getArrCourseByCourseId(courseId));
+        List<ArrCourse> arrCourses = arrCourseMapper.selectList(new QueryWrapper<ArrCourse>()
+                .eq("course_id", courseId));
+        return Result.success(arrCourses);
     }
 }

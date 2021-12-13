@@ -185,10 +185,35 @@ public class ArrangeServiceImpl implements ArrangeService{
                 .eq("arrange_time", time));
         arrUserMapper.delete(new QueryWrapper<ArrUser>()
                 .eq("arrange_date", date)
-                .eq("arrange_time",time));
+                .eq("arrange_time", time));
         arrRoomMapper.delete(new QueryWrapper<ArrRoom>()
                 .eq("arrange_date", date)
                 .eq("arrange_time", time));
         return Result.success(arrCourses);
+    }
+
+    @Override
+    public Result<?> deleteArrangementByArrCourse(List<ArrCourse> arrCourses) {
+        for(ArrCourse arrCourse : arrCourses){
+            arrUserMapper.delete(new QueryWrapper<ArrUser>()
+                    .eq("arrange_date", arrCourse.getArrangeDate())
+                    .eq("arrange_time", arrCourse.getArrangeTime())
+                    .eq("course_id", arrCourse.getCourseId()));
+            arrRoomMapper.delete(new QueryWrapper<ArrRoom>()
+                    .eq("arrange_date", arrCourse.getArrangeDate())
+                    .eq("arrange_time", arrCourse.getArrangeTime())
+                    .eq("course_id", arrCourse.getCourseId()));
+        }
+        return Result.success();
+    }
+
+    @Override
+    public Result<?> getArrangementByDeviceId(String deviceId, Date date, Integer time) {
+        List<ArrUser> arrUsers = arrUserMapper.selectList(new QueryWrapper<ArrUser>()
+                .eq("device_id", deviceId)
+                .eq("arrange_date", date)
+                .eq("arrange_time", time)
+                .orderByDesc("arrange_date", "arrange_time"));
+        return Result.success(arrUsers);
     }
 }
