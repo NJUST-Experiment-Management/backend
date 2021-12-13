@@ -25,6 +25,17 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
+    public Result<?> ReadMessage(String messageId) {
+        Message message = messageMapper.selectById(messageId);
+        message.setRead(true);
+        if(messageMapper.updateById(message)>0){
+            return Result.success();
+        }
+        else  {
+            return Result.error("-1","已读失败");
+        }
+    }
+    @Override
     public Result<?> sendMessage(List<String> userList, Message message) {
         for(String userId:userList){
             message.setReceiverId(userId);

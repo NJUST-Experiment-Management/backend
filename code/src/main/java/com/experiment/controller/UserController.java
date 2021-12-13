@@ -24,20 +24,24 @@ public class UserController extends BaseController{
     MessageService messageService;
 
     @ApiOperation("用户登录")
-    @PostMapping("/login")
+    @PostMapping("/login")//ok
     public Result<?> login(@RequestBody User user){
         return userService.login(user);
     }
 
     @ApiOperation("获取未读消息数量")
-    @GetMapping("/getMessageNum")
+    @GetMapping("/getMessageNum")//ok
     public Result<?> getMessageNum(){
         return messageService.getMessageNum(getUserId());
     }
 
     @ApiOperation("获取用户全部消息")
-    @GetMapping("/getMessages")
+    @GetMapping("/getMessages")//ok
     public Result<?> getMessages(){ return  messageService.getMessages(getUserId());}
+
+    @ApiOperation("已读消息")
+    @GetMapping("/readMessage")
+    public Result<?> readMessage(@RequestParam String messageId){ return  messageService.ReadMessage(messageId);}
 
     @ApiOperation("更新用户信息")
     @PostMapping("/updateUser")
@@ -66,7 +70,7 @@ public class UserController extends BaseController{
     }
 
     @ApiOperation("设置管理员")
-    @GetMapping ("/setAdmin")
+    @GetMapping ("/setAdmin")//ok
     public Result<?> setAdmin(@RequestParam String userId){
         if(!getUser().getUserType().equals("ADMIN"))
             return Result.error("-1", "无权限");

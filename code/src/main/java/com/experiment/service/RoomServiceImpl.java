@@ -111,16 +111,19 @@ public class RoomServiceImpl implements RoomService{
         List<Room> rooms= (List<Room>) getLeftStudentNumber(room,date,time).getData();
         for(Room i:rooms){
             System.out.println("xxxxxxxx");
+            if(i.getRoomStatus()!="DISABLED"){
                 QueryWrapper<ArrRoom> queryWrapper = new QueryWrapper<ArrRoom>()
                         .eq("room_id",i.getRoomId())
                         .eq("arrange_date",date)
                         .eq("arrange_time",time);
                 ArrRoom arrRoom = arrRoomMapper.selectOne(queryWrapper);
-                if(arrRoom == null)
+                if(arrRoom == null){
                     roomList.add(i);
-                else if(isShareable&&arrRoom.isShareable())
+                }
+                else if(isShareable&&arrRoom.isShareable()&&i.getOccupiedDevice()>0)
                     roomList.add(i);
-//            }
+//
+            }
         }
         return Result.success(roomList);
 

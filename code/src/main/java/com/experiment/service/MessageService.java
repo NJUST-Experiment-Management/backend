@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MessageService {
     Result<?> getMessageNum(String userId);
-
+    Result<?> ReadMessage(String messageId);
     /**
      * <p>向list里的所有用户发送信息</p>
      * @param userList 用户编号列表

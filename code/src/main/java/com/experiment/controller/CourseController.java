@@ -29,7 +29,7 @@ public class CourseController extends BaseController {
     @Resource
     MessageService messageService;
     @ApiOperation("根据id查课")
-    @GetMapping("/findCourse/id")
+    @GetMapping("/findCourse/id")//ok
     public Result<?> findCourseById() {
         return courseService.idFindCourse(getUserId());
     }
@@ -48,20 +48,21 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("获取所有开放性实验")
-    @GetMapping("/findCourse/open")
+    @GetMapping("/findCourse/open")//ok
     public Result<?> getAllOpenCourse() {
         return courseService.getOpenCourse();
-//        ok
+
     }
 
-    @GetMapping("/teacherCourse")
+    @ApiOperation("老师所有课程")
+    @GetMapping("/teacherCourse")//ok
     public Result<?> getTeacherCourse(){
         return courseService.getTeacherCourse(getUserId());
     }
 
 
-    @ApiOperation("增加课程/竞赛")
-    @PostMapping("/addCourse")
+    @ApiOperation("增加课程")
+    @PostMapping("/addCourse")//ok
     public Result<?> addCourse(@RequestBody MultipartFile file, @RequestParam String courseName,@RequestParam String courseContent,@RequestParam Boolean isOpening){
         System.out.println(courseContent);
         Course course = new Course();
@@ -92,13 +93,13 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("删除课程")
-    @PostMapping("/deleteCourse")
+    @PostMapping("/deleteCourse")//ok
     public Result<?> deleteCourse(@RequestBody String courseId) {
         return courseService.deleteCourse(courseId);
     }
 
     @ApiOperation("更新课程信息")
-    @PostMapping("/updateCourse")
+    @PostMapping("/updateCourse")//ok
     public Result<?> updateCourse(@RequestBody Course course) {
         return courseService.updateCourse(course);
     }
@@ -122,7 +123,7 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("获取某时间所有房间的课程安排")
-    @GetMapping("/arrangement/roomCourse/all")
+    @GetMapping("/arrangement/roomCourse/all")//ok
     public Result<?> getAllArrangement(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam Integer time) {
         return arrangeService.getArrangementByTime(date, time);  // 对象数组Object[List<Room>, List<List<Course>>]
     }
@@ -135,7 +136,7 @@ public class CourseController extends BaseController {
         return arrangeService.getAllArrangement();
     }
 
-    @ApiOperation("插入课程安排")
+    @ApiOperation("插入课程安排")//ok
     @PostMapping("arrangement/add/course")
     public Result<?> addCourseArrangement(@RequestParam String courseId, @RequestParam Integer startWeek, @RequestParam Integer lastWeek, @RequestParam Integer day, @RequestParam Integer arrangeTime,
                                           @RequestParam Boolean isSharable,
@@ -153,7 +154,7 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("插入竞赛安排")
-    @PostMapping("/arrangement/add/compete")
+    @PostMapping("/arrangement/add/compete")//ok
     public Result<?> addCompeteArrangement(@RequestParam String courseId, @RequestParam Integer startWeek, @RequestParam Integer lastWeek, @RequestParam Integer day, @RequestParam Integer arrangeTime,
                                            @RequestParam Boolean isSharable,
                                            @RequestBody List<Room> rooms){
@@ -181,7 +182,7 @@ public class CourseController extends BaseController {
         return Result.success();
     }
 
-    @ApiOperation("选择开放性实验")
+    @ApiOperation("选择开放性实验")//ok
     @PostMapping("arrangement/chooseOpenCourse")
     public Result<?> chooseOpenCourseArrangement(@RequestParam String courseId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam Integer time,
                                           @RequestParam String roomId) {

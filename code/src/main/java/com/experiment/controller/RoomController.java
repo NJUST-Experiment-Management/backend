@@ -40,7 +40,7 @@ public class RoomController extends BaseController{
     }
 
     @ApiOperation("获取所有可用的机房列表，含有机位信息")
-    @GetMapping("/room/available")
+    @GetMapping("/room/available")//ok(考试)
     public Result<?> getAllAvailableRoom(){
         List<Date> dateList = new ArrayList<>();
         dateList.add(new Date());
@@ -57,7 +57,7 @@ public class RoomController extends BaseController{
     }
 
     @ApiOperation("根据时间段查可用机房")
-    @GetMapping("/room/period")
+    @GetMapping("/room/period")//ok
     public Result<?> getRoomWithPeriod(@RequestParam Integer startWeek, @RequestParam Integer lastWeek, @RequestParam Integer day, @RequestParam Integer arrangeTime,
                                        @RequestParam Boolean isSharable){
         List<Date> dateList = new ArrayList<>();
@@ -68,20 +68,19 @@ public class RoomController extends BaseController{
     }
 
     @ApiOperation("返回指定时间可供开放性课程选课的房间")
-    @PostMapping("/room/openCourse")
+    @PostMapping("/room/openCourse")//ok
     public Result<?> getRoomsByOpenCourse(@RequestBody Course course, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam Integer time){
         return roomService.getRoomByOpenCourse(course, date, time);
-        //ok
     }
 
     @ApiOperation("增加新的机房")
-    @PostMapping("/room/add")
+    @PostMapping("/room/add")//ok
     public Result<?> addRoom(@RequestBody Room room){
         room.setRoomId(IdUtil.fastSimpleUUID());
         return roomService.addRoom(room);
     }
 
-    @ApiOperation("开关机房")
+    @ApiOperation("开关机房")//ok
     @PostMapping("/changeStatus/room")
     public Result<?> changeRoomStatus(@RequestBody Room room){
         if(room.getRoomStatus().equals("DISABLED"))
@@ -91,7 +90,7 @@ public class RoomController extends BaseController{
         return roomService.updateRoom(room);
     }
 
-    @ApiOperation("改变器械状态")
+    @ApiOperation("改变器械状态")//ok
     @PostMapping("/changeStatus/device")
     public Result<?> changeDeviceStaus(@RequestBody Device device){
         if(device.getDeviceStatus().equals("DISABLED"))
@@ -104,13 +103,13 @@ public class RoomController extends BaseController{
 
 
     @ApiOperation("获取某房间内所有的机位")
-    @GetMapping("/device/all")
+    @GetMapping("/device/all")//ok
     public Result<?> getDevicesByRoom(@RequestParam String roomId){
         return deviceService.getAllDevice(roomId);
     }
 
     @ApiOperation("更改房间内机位的状态")
-    @PostMapping("/device/update")
+    @PostMapping("/device/update")//ok
     public Result<?> updateDevice(@RequestBody Device device){
         return deviceService.updateDeviceById(device);
     }
