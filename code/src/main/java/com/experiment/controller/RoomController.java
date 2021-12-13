@@ -106,7 +106,7 @@ public class RoomController extends BaseController{
 
     @ApiOperation("获取机位历史记录")
     @GetMapping("/device/history")
-    public Result<?> getDeviceHistory(@RequestParam String deviceId, @RequestParam Date arrangeDate, @RequestParam Integer arrangeTime){
+    public Result<?> getDeviceHistory(@RequestParam String deviceId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date arrangeDate, @RequestParam Integer arrangeTime){
         if(!getUser().getUserType().equals("ADMIN"))
             return Result.error("-1", "无权限");
         return arrangeService.getArrangementByDeviceId(deviceId, arrangeDate, arrangeTime);

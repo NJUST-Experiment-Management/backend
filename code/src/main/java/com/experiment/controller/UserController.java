@@ -63,7 +63,7 @@ public class UserController extends BaseController{
 
     @ApiOperation("向某身份群体发送消息")
     @PostMapping("/message/sendUserType")
-    public Result<?> sendMessageByType(@RequestBody Message message, @RequestBody String userType){
+    public Result<?> sendMessageByType(@RequestBody Message message, @RequestParam String userType){
         if(!getUser().getUserType().equals("ADMIN"))
             return Result.error("-1", "无权限");
         Object data = userService.getUserByType(userType).getData();
@@ -71,8 +71,9 @@ public class UserController extends BaseController{
             return Result.error("-1", "系统错误，刷新重试");
         List<String> stringList = new ArrayList<>();
         for(User user : (List<User>) data){
-            stringList.add(user.getUserType());
+            stringList.add(user.getUserId());
         }
+
         return messageService.sendMessage(stringList, message);
     }
 

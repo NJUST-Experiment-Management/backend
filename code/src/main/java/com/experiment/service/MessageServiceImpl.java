@@ -11,6 +11,7 @@ import com.experiment.mapper.MessageMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,6 +41,7 @@ public class MessageServiceImpl implements MessageService{
         for(String userId:userList){
             message.setReceiverId(userId);
             message.setMessageId(IdUtil.fastSimpleUUID());
+            message.setSendTime(new Date());
             messageMapper.insert(message);
         }
         return Result.success();

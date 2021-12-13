@@ -31,6 +31,7 @@ public class CourseController extends BaseController {
     @ApiOperation("根据id查课")
     @GetMapping("/findCourse/id")//ok
     public Result<?> findCourseById() {
+        System.out.println(courseService.idFindCourse(getUserId()).getData());
         return courseService.idFindCourse(getUserId());
     }
 
@@ -203,7 +204,7 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("教师根据课程id查课")
-    @GetMapping("/arrangement/course")
+    @GetMapping("/arrangement/course")//ok
     public Result<?> getArrCourseByCourseId(@RequestParam String courseId) {
         if(getUser().getUserType().equals("STUDENT"))
             return Result.error("-1", "无权限");
@@ -211,7 +212,7 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("教师删除对应安排")
-    @PostMapping("/arrangement/delete")
+    @PostMapping("/arrangement/delete")//ok
     public Result<?> deleteArrangement(@RequestBody List<ArrCourse> arrCourses){
         if(getUser().getUserType().equals("STUDENT"))
             return Result.error("-1", "无权限");
