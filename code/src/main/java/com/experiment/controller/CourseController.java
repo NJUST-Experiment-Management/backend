@@ -175,7 +175,7 @@ public class CourseController extends BaseController {
             List<ArrCourse> arrCourses = (List<ArrCourse>) arrangeService.clearArrangementByTime(date, arrangeTime).getData();
             for(ArrCourse arrCourse : arrCourses){
                 tmpCourse.setCourseId(arrCourse.getCourseId());
-                message.setContent(title + "，变动课程编号为"+arrCourse.getCourseId());
+                message.setContent(title + "，变动课程为"+arrCourse.getCourseName());
                 messageService.sendMessage(tmpCourse, message);
             }
         }
