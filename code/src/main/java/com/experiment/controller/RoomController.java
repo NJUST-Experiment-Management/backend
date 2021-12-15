@@ -77,6 +77,8 @@ public class RoomController extends BaseController{
     @ApiOperation("增加新的机房")
     @PostMapping("/room/add")//ok
     public Result<?> addRoom(@RequestBody Room room){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
         room.setRoomId(IdUtil.fastSimpleUUID());
         return roomService.addRoom(room);
     }
