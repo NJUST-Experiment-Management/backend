@@ -1,0 +1,136 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e1da5c24-6fc8-4166-9381-ead92b180e2f\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/code/src/main/java/com/experiment/service/DeviceServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/code/src/main/java/com/experiment/service/DeviceServiceImpl.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"spring-beans.schema\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"feature-course\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"localRepository\" value=\"D:\\data\\mavenProject\" />\r\n        <option name=\"mavenHome\" value=\"$PROJECT_DIR$/../../../app/maven\" />\r\n        <option name=\"userSettingsFile\" value=\"D:\\app\\maven\\conf\\settings.xml\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"20zki3MZhIwVy9cQiQ8OwvI00Hu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/code\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"MavenSettings\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"ExperimentApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"experiment\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.experiment.ExperimentApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e1da5c24-6fc8-4166-9381-ead92b180e2f\" name=\"Changes\" comment=\"\" />\r\n      <created>1637054929654</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1637054929654</updated>\r\n      <workItem from=\"1637054933090\" duration=\"240000\" />\r\n      <workItem from=\"1638687755453\" duration=\"2800000\" />\r\n      <workItem from=\"1638691453420\" duration=\"3694000\" />\r\n      <workItem from=\"1638979947235\" duration=\"9591000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"增加部分机位功能（查询增加更改）\">\r\n      <created>1638695014983</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1638695014983</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"设备部分的注释说明\">\r\n      <created>1638980940699</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1638980940699</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"解志琦course两类函数，李洋洋设备查询全部机器\">\r\n      <created>1639054868905</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1639054868905</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"增加部分机位功能（查询增加更改）\" />\r\n    <MESSAGE value=\"设备部分的注释说明\" />\r\n    <MESSAGE value=\"解志琦course两类函数，李洋洋设备查询全部机器\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"解志琦course两类函数，李洋洋设备查询全部机器\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7d4c057a7b8c2e334d4c638650a1b3de04703747)
++++ b/.idea/workspace.xml	(date 1639317870064)
+@@ -6,7 +6,50 @@
+   <component name="ChangeListManager">
+     <list default="true" id="e1da5c24-6fc8-4166-9381-ead92b180e2f" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/code/src/main/java/com/experiment/service/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/com/experiment/service/DeviceServiceImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/ExperimentApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/ExperimentApplication.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/common/AuthInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/common/AuthInterceptor.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/common/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/common/Result.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/common/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/common/config/WebConfig.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/CourseController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/RoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/RoomController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/controller/UserController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrCourse.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrRoom.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/ArrUser.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Course.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/CourseStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/CourseStudent.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/CourseTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/CourseTable.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/DateMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/DateMsg.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Device.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Device.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Message.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Room.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Term.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/Term.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/entity/User.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/exception/CustomException.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/exception/CustomException.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/exception/GlobalExceptionHandler.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/ArrCourseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/ArrCourseMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/ArrUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/ArrUserMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/CourseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/CourseMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/CourseTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/CourseTableMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/DeviceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/DeviceMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/MessageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/MessageMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/TermMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/TermMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/mapper/UserMapper.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/ArrangeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/ArrangeService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/ArrangeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/ArrangeServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/CourseService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/CourseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/CourseServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DateService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DateServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DeviceService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DeviceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/DeviceServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/MessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/MessageService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/MessageServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/RoomService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/RoomService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/RoomServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/RoomServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/UserService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/service/UserServiceImpl.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/code/target/classes/com/experiment/utils/TokenUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/target/classes/com/experiment/utils/TokenUtils.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,18 +68,16 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="feature-course" />
++        <entry key="$PROJECT_DIR$" value="newtest0" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MavenImportPreferences">
+-    <option name="generalSettings">
+-      <MavenGeneralSettings>
+-        <option name="localRepository" value="D:\data\mavenProject" />
+-        <option name="mavenHome" value="$PROJECT_DIR$/../../../app/maven" />
+-        <option name="userSettingsFile" value="D:\app\maven\conf\settings.xml" />
+-      </MavenGeneralSettings>
++    <option name="importingSettings">
++      <MavenImportingSettings>
++        <option name="jdkForImporter" value="#JAVA_HOME" />
++      </MavenImportingSettings>
+     </option>
+   </component>
+   <component name="ProjectId" id="20zki3MZhIwVy9cQiQ8OwvI00Hu" />
+@@ -50,6 +91,10 @@
+     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="DatabaseDriversLRU" value="mysql" />
++    <property name="RequestMappingsPanelOrder0" value="0" />
++    <property name="RequestMappingsPanelOrder1" value="1" />
++    <property name="RequestMappingsPanelWidth0" value="75" />
++    <property name="RequestMappingsPanelWidth1" value="75" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+@@ -61,6 +106,17 @@
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
+   <component name="RunManager">
++    <configuration default="true" type="JetRunConfigurationType">
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="ExperimentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+       <module name="experiment" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="com.experiment.ExperimentApplication" />
+@@ -114,7 +170,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/newtest0" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>

@@ -15,7 +15,7 @@ import java.util.Date;
 public class Message {
     @TableId("message_id")
     private String messageId;
-    private String receiveId;
+    private String receiverId;
     private String content;
     private Date sendTime;
     private boolean isRead;

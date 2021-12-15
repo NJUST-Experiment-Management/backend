@@ -16,6 +16,7 @@ public class ArrRoom {
     @TableId("arr_room_id")
     private String arrRoomId;
     private String roomId;
+    private String courseId;
     private Date arrangeDate;
     private int arrangeTime;
     private boolean isShareable;
