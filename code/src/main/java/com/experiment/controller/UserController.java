@@ -106,4 +106,16 @@ public class UserController extends BaseController{
         return userService.updateUserById(user);
     }
 
+    @ApiOperation("查询所有人员")
+    @GetMapping("/getAllUsers")
+    public Result<?> getAllUsers(){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        Map<String, List<User>> userMap = new HashMap<>();
+        String[] types = new String[]{"STUDENT", "TEACHER", "ADMIN"};
+        for(int i = 0 ; i < 3; i++){
+            userMap.put(types[i], (List<User>) userService.getUserByType(types[i]).getData());
+        }
+        return Result.success(userMap);
+    }
 }
