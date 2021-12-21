@@ -9,13 +9,14 @@ import com.experiment.service.MessageService;
 import com.experiment.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.val;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Api(tags = "用户基本操作")
 @RestController
@@ -106,4 +107,20 @@ public class UserController extends BaseController{
         return userService.updateUserById(user);
     }
 
+    @ApiOperation("查询所有人员")
+    @GetMapping("/getAllUsers")
+    public Result<?> getAllUsers(){
+        if(!getUser().getUserType().equals("ADMIN"))
+            return Result.error("-1", "无权限");
+        Map<String, List<User>> userMap = new HashMap<>();
+        String[] types = new String[]{"STUDENT", "TEACHER", "ADMIN"};
+        for(int i = 0 ; i < 3; i++){
+            Object data = userService.getUserByType(types[i]).getData();
+            if(data instanceof List<?>)
+                userMap.put(types[i], (List<User>) data);
+            else
+                userMap.put(types[i], new ArrayList<User>());
+        }
+        return Result.success(userMap);
+    }
 }

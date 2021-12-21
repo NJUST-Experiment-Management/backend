@@ -110,6 +110,11 @@ public class RoomServiceImpl implements RoomService{
         List<Room> room= roomMapper.selectList(null);
         List<Room> rooms= (List<Room>) getLeftStudentNumber(room,date,time).getData();
         for(Room i:rooms){
+            QueryWrapper<Room> queryWrapper0 = new QueryWrapper<Room>()
+                    .eq("room_id",i.getRoomId());
+            Room room_temp=roomMapper.selectOne(queryWrapper0);
+            if(room_temp.getRoomStatus().equals("DISABLED"))
+                continue;
             System.out.println("xxxxxxxx");
             if(i.getRoomStatus()!="DISABLED"){
                 QueryWrapper<ArrRoom> queryWrapper = new QueryWrapper<ArrRoom>()
