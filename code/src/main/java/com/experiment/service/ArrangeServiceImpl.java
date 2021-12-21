@@ -107,9 +107,13 @@ public class ArrangeServiceImpl implements ArrangeService{
         if(arrUser == null){
             return Result.error("-1", "系统错误");
         }
+        Course course = courseMapper.selectById(arrUser.getCourseId());
+        if(!course.getIsOpening()){
+            return Result.error("-1", "你无法退选非开放性实验安排");
+        }
         arrUserMapper.deleteById(arrUser.getArrUserId());
-        ArrUser tempArrUser = arrUserMapper.selectOne(new QueryWrapper<ArrUser>().eq("course_id", arrUser.getCourseId()).eq("arrange_date", date).eq("arrange_time", time));
-        if(tempArrUser == null){
+        List<ArrUser> tempArrUser = arrUserMapper.selectList(new QueryWrapper<ArrUser>().eq("course_id", arrUser.getCourseId()).eq("arrange_date", date).eq("arrange_time", time));
+        if(tempArrUser == null || tempArrUser.isEmpty()){
             arrRoomMapper.delete(new QueryWrapper<ArrRoom>()
                     .eq("course_id", arrUser.getCourseId())
                     .eq("arrange_time", arrUser.getArrangeTime())

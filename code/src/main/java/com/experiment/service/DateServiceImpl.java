@@ -44,12 +44,12 @@ public class DateServiceImpl implements DateService{
         Date currentDate=DateUtil.date();
         Term term=termMapper.getNearTerm(currentDate);
         Date date=DateUtil.offsetWeek(term.getBeginTime(),week-1);
-        Integer dayOfDate=DateUtil.dayOfWeek(date);
+//        Integer dayOfDate=DateUtil.dayOfWeek(date);
         if(day==0)
             day=7;
-        if(dayOfDate==0)
-            dayOfDate=7;
-        Integer dayDistance=day-dayOfDate;
+//        if(dayOfDate==0)
+//            dayOfDate=7;
+        Integer dayDistance=day-1;
         date=DateUtil.offsetDay(date,dayDistance);
         return date;
 

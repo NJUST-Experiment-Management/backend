@@ -198,8 +198,8 @@ public class CourseController extends BaseController {
     }
 
     @ApiOperation("退选开放实验")
-    @PostMapping("/arrangement/quitOpenCourse")
-    public Result<?> quitOpenCourseArrangement(@RequestBody Date date, @RequestBody Integer time) {
+    @GetMapping("/arrangement/quitOpenCourse")
+    public Result<?> quitOpenCourseArrangement(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam Integer time) {
         return arrangeService.quitOpenCourse(getUser(), date, time);
     }
 
